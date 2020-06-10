@@ -1,0 +1,35 @@
+Step 1.
+
+python3 -V
+pip3
+git --version
+pip3 install virtualenv
+mkdir ml-source
+cd ml-source
+virtualenv env      
+source env/bin/activate  (print command "deactivate" to close env)
+pip3 install django    
+
+to check:
+python3
+>>> import django
+>>> django.get_version()
+>>> exit()
+
+django-admin.py startproject <proj_name>
+
+
+
+Step 2.
+
+add .gitignore to project folder and write into it:
+
+env
+*.DS_Store
+*.pyc
+__pycache__
+
+
+# /usr/local/Cellar/python/3.7.7/bin/python3
+
+pip3 freeze > requirements.txt
