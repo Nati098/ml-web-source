@@ -42,7 +42,7 @@ class User(models.Model):
     password = models.CharField(verbose_name='password', max_length=20, blank=False)
     email = models.EmailField(verbose_name='email', help_text='example@mail.ru', blank=False)
     fio = models.CharField(verbose_name='fio', max_length=30, blank=True)
-    bday = models.DateField(verbose_name='bday', blank=True)
+    bday = models.DateField(verbose_name='bday', blank=True, null=True)
 
     role = models.ForeignKey(UserRole, on_delete=models.CASCADE)  # поле отношений - сейчас: 1 ко многим
     favourites = models.ManyToManyField(Article)

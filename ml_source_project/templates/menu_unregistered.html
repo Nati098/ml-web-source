@@ -1,6 +1,32 @@
-{% extends 'main_menu.html' %}
-{% block menu_unregistered %}
+{% extends 'side_menu.html' %}
+{% block temp_side_menu %}
 
-
+    <ul class="list-unstyled components">
+            <li>
+                <div id="login" >
+                    <div class="container">
+                        {% csrf_token %}
+                        <form id="login-form" class="form" action="" method="post">
+                        <h3>Sign In</h3>
+                        <div class="form-group">
+                            <label for="username">Username:</label><br>
+                            <input type="text" name="username" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label><br>
+                            <input type="text" name="password" id="password" class="form-control">
+                        </div>
+                        <input type="submit" name="submit" class="btn btn-md" style="margin-bottom: 10px" value="Submit">
+                        <div id="forgot-password-link" class="text-right">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <div id="register-link" class="text-right">
+                            <a href="#">Not with us? Sign up</a>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
 
 {% endblock %}

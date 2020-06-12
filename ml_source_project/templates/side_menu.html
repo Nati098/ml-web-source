@@ -1,0 +1,88 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block side_menu %}
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <a class="navbar-brand" href="#">
+                <img class="img_logo d-inline-block align-top" alt="Pipeline" src="{% static "img/logo.png" %}">
+                Info Source
+            </a>
+
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <form class="navbar-form" role="search" style="margin: 10px">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search" name="q">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
+                  </div>
+              </div>
+            </form>
+
+{#            <p>Dummy Heading</p>#}
+{#            <li class="active">#}
+{#                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>#}
+{#                <ul class="collapse list-unstyled" id="homeSubmenu">#}
+{#                    <li>#}
+{#                        <a href="#">Home 1</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">Home 2</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">Home 3</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </li>#}
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Articles</a>
+            </li>
+{#            <li>#}
+{#                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>#}
+{#                <ul class="collapse list-unstyled" id="pageSubmenu">#}
+{#                    <li>#}
+{#                        <a href="#">Page 1</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">Page 2</a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="#">Page 3</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </li>#}
+            <li>
+                <a href="#">Web demos</a>
+            </li>
+            <li>
+                <a href="#">Study materials</a>
+            </li>
+            <li>
+                <a href="#">Help</a>
+            </li>
+
+        </ul>
+
+        {% block temp_side_menu %}
+        {% endblock %}
+
+    </nav>
+
+    <script>
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+    </script>
+
+{% endblock %}
