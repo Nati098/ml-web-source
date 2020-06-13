@@ -17,6 +17,7 @@ class WebDemo(models.Model):
     title = models.CharField(verbose_name='title', max_length=100, blank=False)
     content = models.TextField(verbose_name='content')  # https://stackoverflow.com/questions/4915397/django-blob-model-field/4915465
     code = models.TextField(verbose_name='code', blank=False)
+    date = models.DateField(verbose_name='public_date', blank=False)
     is_accepted = models.BooleanField(verbose_name='is_accepted', blank=False)
 
     article = models.ForeignKey(Article, on_delete=models.CASCADE)

@@ -1,0 +1,22 @@
+{% extends 'articles.html' %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content_block %}
+    <div id="content">
+        <h2>{{ article.title }}</h2>
+        <div>{{ article.content }}</div>
+        {% if article.code %}
+            <div>{{ article.code }}</div>
+        {% endif %}
+        <p></p>
+        <div>Publication date: {{article.date|date:"d M Y"}}</div>
+        {#  if next is true then it's demo  #}
+        {% if article.code %}
+            <p></p>
+            <p>Link to article: <a href="{% url 'article_details' article_id=article.article.id type_='article' %}">{{ article.article.title }}</a></p>
+        {% endif %}
+    </div>
+{% endblock %}

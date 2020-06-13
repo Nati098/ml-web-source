@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Home</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -28,16 +28,10 @@
         {% endblock %}
 
         <!-- Page Content -->
-        <div id="content">
-            <!-- We'll fill this with dummy content -->
-            <h1>Here will be content</h1>
-        </div>
+        {% block content_block %}
+        {% endblock %}
 
     </div>
-
-
-
-
 
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->

@@ -1,6 +1,9 @@
 {% extends 'index.html' %}
 {% load static %}
 
+{#{% block title %}#}
+{#{% endblock %}#}
+
 {% block side_menu %}
 
     <nav id="sidebar">
@@ -39,10 +42,10 @@
 {#                </ul>#}
 {#            </li>#}
             <li>
-                <a href="#">Home</a>
+                <a href="{% url 'home' %}">Home</a>
             </li>
             <li>
-                <a href="#">Articles</a>
+                <a href="{% url 'articles' type_='article' %}">Articles</a>
             </li>
 {#            <li>#}
 {#                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>#}
@@ -59,13 +62,13 @@
 {#                </ul>#}
 {#            </li>#}
             <li>
-                <a href="#">Web demos</a>
+                <a href="{% url 'articles' type_='demo' %}">Web demos</a>
             </li>
             <li>
-                <a href="#">Study materials</a>
+                <a href="{% url 'articles' type_='material' %}">Study materials</a>
             </li>
             <li>
-                <a href="#">Help</a>
+                <a href="{% url 'help' %}">Help</a>
             </li>
 
         </ul>
@@ -86,3 +89,6 @@
     </script>
 
 {% endblock %}
+
+{#{% block content_block %}#}
+{#{% endblock %}#}
