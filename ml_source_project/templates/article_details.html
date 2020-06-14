@@ -1,20 +1,21 @@
 {% extends 'articles.html' %}
+{% load static %}
 
 {% block title %}
     {{ article.title }}
 {% endblock %}
 
 {% block content_block %}
-    <div id="content">
+    <div id="content" style="margin-left: 10px">
         <h2>{{ article.title }}</h2>
-        <div>{{ article.content }}</div>
+        <p>{{ article.content | safe | linebreaks }}</p>
         {% if article.code %}
-            <div>{{ article.code }}</div>
+            <textarea style="color: black; font-family: 'Courier New';width: 98%">{{ article.code }}</textarea>
         {% endif %}
         <p></p>
-        <div>Publication date: {{article.date|date:"d M Y"}}</div>
+        <div>Дата публикации: {{article.date|date:"d M Y"}}</div>
         {#  if next is true then it's demo  #}
-        {% if article.code %}
+        {% if article.article %}
             <p></p>
             <p>Link to article: <a href="{% url 'article_details' article_id=article.article.id type_='article' %}">{{ article.article.title }}</a></p>
         {% endif %}

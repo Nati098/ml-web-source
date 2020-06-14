@@ -19,11 +19,11 @@
     <div>
         {% if form.errors %}
             <p style="margin: 10px">
-                Your username and password didn't match.
-                Please try again.
+                Некорректно введены логин и/или пароль.
+                Пожалуйста, повторите попытку снова.
             </p>
         {% else %}
-            <p style="margin: 10px">Please, use the following form to sign in:</p>
+            <p style="margin: 10px">Войти:</p>
         {% endif %}
 
         <div class="list-unstyled components">
@@ -33,14 +33,14 @@
                             {{ form.as_p }}
 
 {#                            <input type="hidden" name="next" value="{{ next }}" />#}
-                            <input type="submit" name="submit" class="btn btn-md" style="margin-bottom: 10px" value="Submit">
+                            <input type="submit" name="submit" class="btn btn-md" style="margin-bottom: 10px" value="Войти">
 
                             <div id="forgot-password-link" class="text-right">
                             {# {% url "password_reset" %}#}
-                                    <a href="#">Forgot password?</a>
+                                    <a href="#">Забыли пароль?</a>
                                 </div>
                             <div id="register-link" class="text-right">
-                                    <a href="{% url "register" %}">Not with us? Sign up</a>
+                                    <a href="{% url "register" %}">Еще не с нами? Зарегистрируйтесь</a>
                                 </div>
                         </form>
                     </div>

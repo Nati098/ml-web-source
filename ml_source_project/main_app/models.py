@@ -1,3 +1,4 @@
+import base64
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, AbstractUser, User
@@ -10,6 +11,9 @@ class Article(models.Model):
     is_accepted = models.BooleanField(verbose_name='is_accepted', blank=False)
 
     models.ManyToManyField(User, blank=True, null=True)
+
+    def __unicode__(self):
+        return self.content
 
     def __str__(self):
         return self.title
