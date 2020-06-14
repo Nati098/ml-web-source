@@ -28,11 +28,11 @@
 
         <div class="list-unstyled components">
                     <div id="login" class="container login-form" >
-                        <form action=".." method="post">
+                        <form action="." method="post">
                             {% csrf_token %}
                             {{ form.as_p }}
 
-                            <input type="hidden" name="next" value="{{ next }}" />
+{#                            <input type="hidden" name="next" value="{{ next }}" />#}
                             <input type="submit" name="submit" class="btn btn-md" style="margin-bottom: 10px" value="Submit">
 
                             <div id="forgot-password-link" class="text-right">

@@ -47,7 +47,7 @@
 
         <ul class="user list-unstyled components">
             {% if request.user.is_authenticated %}
-                Hello, {{ request.user.login }}
+                <h6 style="margin-left: 10px">Hello, {{ request.user.username }}!</h6>
                 <li>
                     <a href="#">Profile</a>
                 </li>

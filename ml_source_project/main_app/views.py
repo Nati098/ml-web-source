@@ -17,7 +17,7 @@ def articles(request, type_):
     articles_ = None
     title_ = ''
     if type_ == 'article':
-        articles_ = Article.objects.all()
+        articles_ = Article.objects.order_by('title').all()
         title_ = 'Article'
     elif type_ == 'demo':
         articles_ = WebDemo.objects.all()

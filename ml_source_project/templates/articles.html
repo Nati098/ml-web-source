@@ -4,8 +4,8 @@
 {% endblock %}
 
 {% block content_block %}
-    <div id="content">
-        <h1>Here will be all {{ page_type }}s</h1>
+    <div id="content" style="margin-left: 10px">
+        <h1>All {{ page_type }}s</h1>
         <ul>
             {% for art in articles %}
                 {% if art.is_accepted %}
