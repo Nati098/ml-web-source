@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from django.urls import reverse_lazy
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,8 +85,8 @@ DATABASES = {
     }
 }
 
-
-AUTH_USER_MODEL = 'main_app.User'
+# for custom User
+# AUTH_USER_MODEL = 'main_app.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -104,6 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/main_app/'
+LOGIN_URL = reverse_lazy('login')
+LOGOUT_URL = reverse_lazy('logout')
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import AbstractBaseUser, AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, AbstractUser, User
 
 
 class Article(models.Model):
@@ -8,6 +8,8 @@ class Article(models.Model):
     content = models.TextField(verbose_name='content', blank=False)  # https://stackoverflow.com/questions/4915397/django-blob-model-field/4915465
     date = models.DateField(verbose_name='public_date', blank=False)
     is_accepted = models.BooleanField(verbose_name='is_accepted', blank=False)
+
+    models.ManyToManyField(User, blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -40,13 +42,13 @@ class UserRole(models.Model):
         return self.value
 
 
-class User(AbstractUser):
-    fio = models.CharField(verbose_name='fio', max_length=30, blank=True)
-    bday = models.DateField(verbose_name='bday', blank=True, null=True)
-
-    role = models.ForeignKey(UserRole, on_delete=models.SET_NULL, blank=True, null=True)  # поле отношений - сейчас: 1 ко многим
-    favourites = models.ManyToManyField(Article, blank=True, null=True)
-    date_joined = models.DateTimeField(default=timezone.now)
+# class User(AbstractUser):
+#     fio = models.CharField(verbose_name='fio', max_length=30, blank=True)
+#     bday = models.DateField(verbose_name='bday', blank=True, null=True)
+#
+#     role = models.ForeignKey(UserRole, on_delete=models.SET_NULL, blank=True, null=True)  # поле отношений - сейчас: 1 ко многим
+#     favourites = models.ManyToManyField(Article, blank=True, null=True)
+#     date_joined = models.DateTimeField(default=timezone.now)
 
 
 # class UserManager(BaseUserManager):

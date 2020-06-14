@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+import ml_source_project.settings as settings
 from django.urls import reverse
 
-from main_app.forms import ArticleForm
+from main_app.forms import *
 from main_app.models import *
 
 
@@ -49,5 +51,37 @@ def help_(request):
     return render(request, 'help.html', {})
 
 
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect(request.GET.get('next',
+                                                                settings.LOGIN_REDIRECT_URL))
+                else:
+                    return HttpResponse('Disabled account')
+            else:
+                return HttpResponse('Invalid login')
+    else:
+        form = LoginForm()
+    return render(request, 'auth/login.html', {'form': form})
 
 
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # Set the chosen password
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Save the User object
+            new_user.save()
+            return render(request, 'auth/register_done.html', {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+    return render(request, 'auth/register.html', {'user_form': user_form})

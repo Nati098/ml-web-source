@@ -1,0 +1,50 @@
+{% extends 'side_menu.html' %}
+{% block title %}
+    Sign in
+{% endblock %}
+
+{% block content_block %}
+
+{#    {% if form.errors %}#}
+{#      <p>Your username and password didn't match. Please try again.</p>#}
+{#    {% endif %}#}
+{##}
+{#    {% if next %}#}
+{#        {% if user.is_authenticated %}#}
+{#            <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>#}
+{#        {% else %}#}
+{#            <p>Please login to see this page.</p>#}
+{#        {% endif %}#}
+{#    {% endif %}#}
+    <div>
+        {% if form.errors %}
+            <p style="margin: 10px">
+                Your username and password didn't match.
+                Please try again.
+            </p>
+        {% else %}
+            <p style="margin: 10px">Please, use the following form to sign in:</p>
+        {% endif %}
+
+        <div class="list-unstyled components">
+                    <div id="login" class="container login-form" >
+                        <form action=".." method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                            <input type="hidden" name="next" value="{{ next }}" />
+                            <input type="submit" name="submit" class="btn btn-md" style="margin-bottom: 10px" value="Submit">
+
+                            <div id="forgot-password-link" class="text-right">
+                            {# {% url "password_reset" %}#}
+                                    <a href="#">Forgot password?</a>
+                                </div>
+                            <div id="register-link" class="text-right">
+                                    <a href="{% url "register" %}">Not with us? Sign up</a>
+                                </div>
+                        </form>
+                    </div>
+        </div>
+    </div>
+
+{% endblock %}

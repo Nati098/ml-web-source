@@ -24,4 +24,5 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main_app/', include('main_app.urls')),
+    # path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

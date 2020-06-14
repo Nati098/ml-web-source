@@ -7,7 +7,7 @@ admin.site.register(Article)
 admin.site.register(WebDemo)
 admin.site.register(Section)
 admin.site.register(UserRole)
-admin.site.register(User)
+# admin.site.register(User)
 
 # for the future
 # @admin.register(FavouriteArticle)

@@ -26,41 +26,12 @@
               </div>
             </form>
 
-{#            <p>Dummy Heading</p>#}
-{#            <li class="active">#}
-{#                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>#}
-{#                <ul class="collapse list-unstyled" id="homeSubmenu">#}
-{#                    <li>#}
-{#                        <a href="#">Home 1</a>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <a href="#">Home 2</a>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <a href="#">Home 3</a>#}
-{#                    </li>#}
-{#                </ul>#}
-{#            </li>#}
             <li>
                 <a href="{% url 'home' %}">Home</a>
             </li>
             <li>
                 <a href="{% url 'articles' type_='article' %}">Articles</a>
             </li>
-{#            <li>#}
-{#                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>#}
-{#                <ul class="collapse list-unstyled" id="pageSubmenu">#}
-{#                    <li>#}
-{#                        <a href="#">Page 1</a>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <a href="#">Page 2</a>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <a href="#">Page 3</a>#}
-{#                    </li>#}
-{#                </ul>#}
-{#            </li>#}
             <li>
                 <a href="{% url 'articles' type_='demo' %}">Web demos</a>
             </li>
@@ -71,6 +42,27 @@
                 <a href="{% url 'help' %}">Help</a>
             </li>
 
+        </ul>
+
+
+        <ul class="user list-unstyled components">
+            {% if request.user.is_authenticated %}
+                Hello, {{ request.user.login }}
+                <li>
+                    <a href="#">Profile</a>
+                </li>
+                <li>
+                    <a href="#">Offer article</a>
+                </li>
+                <li>
+                    <a href="{% url "logout" %}">Logout</a>
+                </li>
+
+            {% else %}
+                <li>
+                    <a href="{% url "login" %}">Login</a>
+                </li>
+            {% endif %}
         </ul>
 
         {% block temp_side_menu %}

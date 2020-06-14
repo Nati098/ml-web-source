@@ -1,0 +1,14 @@
+{% extends "side_menu.html" %}
+{% block title %}Create an account{% endblock %}
+
+{% block content_block %}
+    <div class="container">
+        <h1>Create an account</h1>
+        <p>Please, sign up using the following form:</p>
+        <form action="." method="post">
+            {{ user_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Sign up"></p>
+        </form>
+    </div>
+{% endblock %}
